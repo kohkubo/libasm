@@ -9,3 +9,4 @@ _ft_strlen
 	jmp		.loop
 .end:
 	ret
+

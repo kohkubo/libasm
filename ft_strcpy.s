@@ -5,7 +5,6 @@ _ft_strcpy:
 	push	rbp
 	mov		rbp, rsp
 	push	rdi
-	cld
 .copy:
 	cmp		BYTE [rsi], 0
 	je		.end
