@@ -36,6 +36,8 @@ static void	testcase_strcmp()
 	test_strcmp("", d);
 	test_strcmp(d, "");
 	test_strcmp("", "");
+	test_strcmp("あいうえお", "あいうえな");
+	test_strcmp("茜  穐  悪  握  渥  旭  葦", "茜  穐  悪  握  渥  廨  葦");
 	test_strcmp(g_buf, g_buf);
 }
 
