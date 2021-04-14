@@ -6,6 +6,8 @@ srcs = ft_strlen.s \
 		ft_write.s \
 		ft_read.s
 objs = $(srcs:%.s=%.o)
+CC = gcc
+CFLAGS = -D PRINT=1 -D BUFFER_SIZE=2147483646
 
 .PHONY = all clean fclean re test do sani
 
@@ -18,17 +20,17 @@ $(NAME): $(objs)
 	ar rcs $(NAME) $^
 
 lldb: re
-	gcc -g ./testcase/*.c libasm.a
+	$(CC) $(CFLAGS) -g ./testcase/*.c libasm.a
 	lldb ./a.out
 	$(RM) -rf a.out.dSYM
 
 sani: re
-	gcc -g -fsanitize=address ./testcase/*.c libasm.a
+	$(CC) $(CFLAGS) -g -fsanitize=address ./testcase/*.c libasm.a
 	./a.out
 	$(RM) -rf a.out.dSYM
 
 do: re
-	gcc ./testcase/*.c libasm.a
+	$(CC) $(CFLAGS) ./testcase/*.c libasm.a
 	./a.out
 	$(RM) a.out
 

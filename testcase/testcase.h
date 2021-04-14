@@ -27,8 +27,13 @@
 #define BOLDWHITE "\033[1m\033[37m"
 #endif
 
-#define BUFFER_SIZE 2147483646
-#define PRINT 0
+#ifndef PRINT
+# define PRINT 1
+#endif
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 2147483646
+#endif
 
 size_t	ft_strlen(char *s);
 char	*ft_strcpy(char *d, const char *s);
