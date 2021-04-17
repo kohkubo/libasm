@@ -50,7 +50,8 @@ static void	testcase_write()
 	test_write(-1, "aiueo", 5);
 	test_write(-1, 0, 5);
 	test_write(1, "aiueo", -1);
-	// test_write(1, g_buf, (size_t)BUFFER_SIZE);
+	int fd = open("./output.txt", O_WRONLY | O_CREAT | O_TRUNC | S_IRUSR | S_IWUSR);
+	test_write(fd, g_buf, (size_t)BUFFER_SIZE);
 }
 
 static void	testcase_read()

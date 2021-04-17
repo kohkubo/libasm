@@ -22,6 +22,7 @@ void	test_write(int fildes, const void *buf, size_t nbyte)
 {
 	printf(MAGENTA"--- write(%d, %s, %zu); ---\n"RESET, fildes, buf, nbyte);
 	test_write2("libc", write, fildes, buf, nbyte);
+	lseek(fildes, 0, SEEK_SET);
 	test_write2("libasm", ft_write, fildes, buf, nbyte);
 }
 
