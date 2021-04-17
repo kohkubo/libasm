@@ -7,9 +7,9 @@ srcs =  ft_strlen.s \
 		ft_read.s
 objs = $(srcs:%.s=%.o)
 CC = gcc
-CFLAGS = -D PRINT=1 -D BUFFER_SIZE=2147483647
+CFLAGS = -D PRINT=1 -D BUFFER_SIZE=2147483646
 
-.PHONY = all clean fclean re test do sani strlen strcpy strcmp strdup write read
+.PHONY = all clean fclean re test do sani strlen strcpy strcmp strdup write read clean_all
 
 all: $(NAME)
 
@@ -73,6 +73,9 @@ clean:
 	$(RM) $(objs)
 
 fclean: clean
-	$(RM) $(NAME) ./output.txt ./testcase/long.txt
+	$(RM) $(NAME) ./output.txt
+
+clean_all: fclean
+	$(RM) ./testcase/long.txt
 
 re: fclean all
