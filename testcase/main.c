@@ -85,13 +85,24 @@ int main()
 	ft_read(g_fd, g_buf, (size_t)BUFFER_SIZE);
 
 	strcat(g_buf, "tsettest");
-	
-	testcase_strlen();
-	testcase_strcpy();
-	testcase_strcmp();
-	testcase_write();
-	testcase_read();
-	testcase_strdup();
 
+#ifdef STRLEN
+	testcase_strlen();
+#endif
+#ifdef STRCPY
+	testcase_strcpy();
+#endif
+#ifdef STRCMP
+	testcase_strcmp();
+#endif
+#ifdef WRITE
+	testcase_write();
+#endif
+#ifdef READ
+	testcase_read();
+#endif
+#ifdef STRDUP
+	testcase_strdup();
+#endif
 	return (0);
 }
