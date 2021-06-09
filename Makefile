@@ -29,40 +29,31 @@ lldb:
 	lldb ./a.out
 	$(RM) -rf a.out.dSYM
 
-sani:
-	$(CC) $(CFLAGS) -g -fsanitize=address ./testcase/*.c libasm.a
-	./a.out
-	$(RM) -rf a.out.dSYM
+sani: CFLAGS += -g -fsanitize=address -D WRITE
+sani: run
 
-strlen: all
-	$(CC) $(CFLAGS) -D STRLEN ./testcase/*.c libasm.a
-	./a.out
-	$(RM) a.out
+strlen: CFLAGS += -D STRLEN
+strlen: run
 
-strcpy: all
-	$(CC) $(CFLAGS) -D STRCPY ./testcase/*.c libasm.a
-	./a.out
-	$(RM) a.out
+strcpy: CFLAGS += -D STRCPY
+strcpy: run
 
-strcmp: all
-	$(CC) $(CFLAGS) -D STRCMP ./testcase/*.c libasm.a
-	./a.out
-	$(RM) a.out
+strcmp: CFLAGS += -D STRCMP
+strcmp: run
 
-strdup: all
-	$(CC) $(CFLAGS) -D STRDUP ./testcase/*.c libasm.a
-	./a.out
-	$(RM) a.out
+strdup: CFLAGS += -D STRDUP
+strdup: run
 
-write: all
-	$(CC) $(CFLAGS) -D WRITE ./testcase/*.c libasm.a
-	./a.out
-	$(RM) a.out
+write: CFLAGS += -D WRITE
+write: run
 
-read: all
-	$(CC) $(CFLAGS) -D READ ./testcase/*.c libasm.a
-	./a.out
-	$(RM) a.out
+read: CFLAGS += -D READ
+read: run
+
+run: all
+	@$(CC) $(CFLAGS) ./testcase/*.c libasm.a
+	@./a.out
+	@$(RM) -rf a.out a.out.dSYM
 
 do:
 	$(CC) $(CFLAGS) -D STRLEN -D STRCPY -D STRCMP -D STRDUP -D WRITE -D READ ./testcase/*.c libasm.a

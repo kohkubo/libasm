@@ -22,3 +22,25 @@ _ft_write:
 	pop		rbx
 	leave
 	ret
+
+
+; extern  ___error
+; section .text
+; global  _ft_write
+
+; _ft_write:
+; 	mov  rax, 0x2000004
+; 	syscall
+; 	jc   .error
+; 	jmp  .return
+
+; .error:
+; 	mov r8, rax
+; 	sub  rsp, 8
+; 	call ___error
+; 	add  rsp, 8
+; 	mov [rax], r8
+; 	mov rax, -1
+
+; .return:
+; 	ret

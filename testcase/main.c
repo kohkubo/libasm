@@ -45,13 +45,17 @@ static void	testcase_write()
 {
 	printf("\n--- test write ---\n");
 
-	test_write(1, "aiueo", 5);
-	test_write(1, 0, 5);
-	test_write(-1, "aiueo", 5);
-	test_write(-1, 0, 5);
-	test_write(1, "aiueo", -1);
-	int fd = open("./output.txt", O_WRONLY | O_CREAT | O_TRUNC | S_IRUSR | S_IWUSR);
-	test_write(fd, g_buf, (size_t)BUFFER_SIZE);
+	int rc = ft_write(1, "aiueo", -1);
+	printf("ret = %d, errno = %d\n", rc, errno);
+	if (errno)
+		printf(RED"%s\n"RESET, strerror(errno));
+	// test_write(1, "aiueo", 5);
+	// test_write(1, 0, 5);
+	// test_write(-1, "aiueo", 5);
+	// test_write(-1, 0, 5);
+	// test_write(1, "aiueo", -1);
+	// int fd = open("./output.txt", O_WRONLY | O_CREAT | O_TRUNC | S_IRUSR | S_IWUSR);
+	// test_write(fd, g_buf, (size_t)BUFFER_SIZE);
 }
 
 static void	testcase_read()
